@@ -24,7 +24,7 @@ github_username:  zhangpeihao
 
 # Build settings
 markdown: kramdown
-theme: minima
+theme: cayman
 gems:
   - jekyll-feed
 exclude:
