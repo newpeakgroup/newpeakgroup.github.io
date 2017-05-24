@@ -24,7 +24,7 @@ github_username:  zhangpeihao
 
 # Build settings
 markdown: kramdown
-theme: cayman
+theme: jekyll-theme-tactile
 gems:
   - jekyll-feed
 exclude:
