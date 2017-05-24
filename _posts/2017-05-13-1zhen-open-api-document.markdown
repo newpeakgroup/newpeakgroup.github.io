@@ -5,10 +5,10 @@ grammar_cjkRuby: true
 ---
 
 # 目录
- -{:.no_toc}
+-{:.no_toc}
 
 -* Will be replaced with the ToC, excluding the "Contents" header
- -{:toc}
+-{:toc}
 
 ## 版本
 
