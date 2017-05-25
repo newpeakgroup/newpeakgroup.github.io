@@ -1,6 +1,7 @@
 ---
 title: 1诊开放平台接口文档
 tags: 新建,1诊开放平台
+excerpt: 1诊开放平台接口文档
 grammar_cjkRuby: true
 ---
 
