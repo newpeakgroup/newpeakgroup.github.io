@@ -22,6 +22,7 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: 
 github_username:  zhangpeihao
 avatar: https://newpeakgroup.github.io/images/icon.png
+show_downloads: false
 
 # Build settings
 markdown: kramdown
