@@ -26,7 +26,7 @@ grammar_cjkRuby: true
 
 2. 文档中 partner 变量为具体合作方标识,需要申请
 
-3. 1诊开放平台测试服务地址 https://yzm.test.111.com.cn/（需要配置Host）
+3. 1诊开放平台测试服务地址 http://yzm-test.111.com.cn/（需要配置Host）
 
 4. 1诊开放平台正式服务地址 https://yzm.111.com.cn/
 
