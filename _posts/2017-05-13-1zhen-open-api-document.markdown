@@ -33,17 +33,17 @@ grammar_cjkRuby: true
 
 ### Sign计算规则
 
-* `认证校验字符串`: 根据每个接口参与Sign计算的参数，按key升序排序，value连接组成认证校验字符串。
-* `partner_key`: 密钥。请妥善保存！
+* `partner_key`: 每个合作方的密钥。请妥善保存！
+* `参加认证校验参数Map`: 每个接口规定了需要参加校验的参数，这些参数按照参数名为`key`，参数值为`value`，组成Map
+* `认证校验参数字符串`: 将`参加认证校验参数Map`按key升序排序，按照`key=<value>`格式用`&`连接组成
+* `认证校验字符串`: `<认证校验参数字符串>`+`&partner_key=<partner_key>`
+* `Sign`: md5(<认证校验字符串>)
 
-```
-sign = md5(认证校验字符串, partner_key)
-```
-
-Java代码例子：
+Java8代码例子：
 
 ```java
 final String PARTENER_KEY = "REPLACE_YOUR_SECURITY_KEY_HERE";
+
 HashMap<String, String> signArgs = new HashMap<>();
 signArgs.put("user_id", "somebody@company");
 signArgs.put("ts", "1496281246");
@@ -55,10 +55,11 @@ Map<String, String> sortedArgs = signArgs.entrySet().stream()
                 Map.Entry::getValue,
                 (oldValue, newValue) ->
                         oldValue, LinkedHashMap::new));
+String signString = sortedArgs.entrySet().stream()
+        .map((entry) -> entry.getKey() + "=" + entry.getValue())
+        .collect(Collectors.joining("&"));
 
-String signString = sortedArgs.values().stream().
-        collect(Collectors.joining());
-signString = signString+PARTENER_KEY;
+signString = signString+"&key="+PARTENER_KEY;
 System.out.println(signString);
 
 byte[] signBytes = signString.getBytes();
@@ -75,11 +76,13 @@ try {
 ```
 
 输出结果：
+
 ```
-value1496281246somebody@companyREPLACE_YOUR_SECURITY_KEY_HERE
-8378038237e64a1f8ebf23bbe248737f
+other_argument=value&ts=1496281246&user_id=somebody@company&key=REPLACE_YOUR_SECURITY_KEY_HERE
+53af7f47af43334ec842546e7c655f75
 ```
 
+如果发现验证失败，请将`signSring`发给岗岭集团的联调开发技术人员，方便排查。
 
 ## API接口
 
