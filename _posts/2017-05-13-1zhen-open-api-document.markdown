@@ -51,10 +51,13 @@ signArgs.put("other_argument", "value");
 
 Map<String, String> sortedArgs = signArgs.entrySet().stream()
         .sorted(Map.Entry.comparingByKey())
-        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
-                (oldValue, newValue) -> oldValue, LinkedHashMap::new));
+        .collect(Collectors.toMap(Map.Entry::getKey,
+                Map.Entry::getValue,
+                (oldValue, newValue) ->
+                        oldValue, LinkedHashMap::new));
 
-String signString = sortedArgs.values().stream().collect(Collectors.joining());
+String signString = sortedArgs.values().stream().
+        collect(Collectors.joining());
 signString = signString+PARTENER_KEY;
 System.out.println(signString);
 
@@ -63,7 +66,8 @@ byte[] signBytes = signString.getBytes();
 try {
     MessageDigest md = MessageDigest.getInstance("MD5");
     byte[] md5Bytes = md.digest(signBytes);
-    String md5Result = String.format("%032x", new BigInteger(1, md5Bytes));
+    String md5Result = String.format("%032x",
+            new BigInteger(1, md5Bytes));
     System.out.print(md5Result);
 } catch (NoSuchAlgorithmException ex) {
     ex.printStackTrace();
