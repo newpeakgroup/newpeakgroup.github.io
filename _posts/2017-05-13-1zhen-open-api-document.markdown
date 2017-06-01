@@ -5,7 +5,7 @@ excerpt: 1诊开放平台接口文档
 grammar_cjkRuby: true
 ---
 
-# 目录
+# 1诊开放平台接口文档
 {:.no_toc}
 
 * Will be replaced with the ToC, excluding the "Contents" header
