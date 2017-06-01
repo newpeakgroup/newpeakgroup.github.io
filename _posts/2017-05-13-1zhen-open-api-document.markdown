@@ -40,6 +40,43 @@ grammar_cjkRuby: true
 sign = md5(认证校验字符串, partner_key)
 ```
 
+Java代码例子：
+
+```java
+        final String PARTENER_KEY = "REPLACE_YOUR_SECURITY_KEY_HERE";
+        HashMap<String, String> signArgs = new HashMap<>();
+        signArgs.put("user_id", "somebody@company");
+        signArgs.put("ts", "1496281246");
+        signArgs.put("other_argument", "value");
+
+        Map<String, String> sortedArgs = signArgs.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+                        (oldValue, newValue) -> oldValue, LinkedHashMap::new));
+
+        String signString = sortedArgs.values().stream().collect(Collectors.joining());
+        signString = signString+PARTENER_KEY;
+        System.out.println(signString);
+
+        byte[] signBytes = signString.getBytes();
+
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] md5Bytes = md.digest(signBytes);
+            String md5Result = String.format("%032x", new BigInteger(1, md5Bytes));
+            System.out.print(md5Result);
+        } catch (NoSuchAlgorithmException ex) {
+            ex.printStackTrace();
+        }
+```
+
+输出结果：
+```
+value1496281246somebody@companyREPLACE_YOUR_SECURITY_KEY_HERE
+8378038237e64a1f8ebf23bbe248737f
+```
+
+
 ## API接口
 
 ### 问诊接口
