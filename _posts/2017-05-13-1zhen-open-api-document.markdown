@@ -28,7 +28,7 @@ grammar_cjkRuby: true
 
 2. 文档中 partner 变量为具体合作方标识,需要申请
 
-3. 1诊开放平台测试服务地址 http://yzm-test.111.com.cn/（需要配置Host）
+3. 1诊开放平台测试服务地址 https://yzmt.111.com.cn/
 
 4. 1诊开放平台正式服务地址 https://yzm.111.com.cn/
 
@@ -172,7 +172,7 @@ URL:`m/cooperation-h5/login.html`
 |partner|合作方标识|String|32|是|／|==需要申请==|
 |user_id|用户名|String|32|是|是|用户唯一标识,合作方定义|
 |mobile|手机号|String|11|是|否|用户手机号|
-|redirect_url|登入后跳转页面|String|64|是|否|根据业务不同重定向页面不同|
+|redirect_url|登入后跳转页面|String|64|是|否|根据业务不同重定向页面不同，需encodeURIComponent处理|
 |ts|签名时间戳|Long|64bit|是|是|unix时间戳(1970年1月1日0时开始的秒数)，线上环境有15分钟超时，请保证调用系统的时钟同步。|
 |sign|签名|String|32|是|／|生成方法参考“Sign计算规则”|
 
