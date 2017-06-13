@@ -92,10 +92,9 @@ other_argument=value&ts=1496281246&user_id=somebody@company&key=REPLACE_YOUR_SEC
 
 ### 问诊接口
 
-
 整理中...
 
-### 查询接口
+### 查询用户诊单接口
 
 #### 请求
 
@@ -154,6 +153,36 @@ URL:`partner/inquerylist/my`
 |recipe_code|处方编号|String|64|是||
 |recipe_time|处方创建时间|String|16|是|格式："YYYY-MM-DD"，例如：2017-06-12|
 |sex|性别|String|1|是|选项包含：F, M|
+
+
+### 按照时间范围查询诊单接口
+
+#### 请求
+
+URL:`partner/inquerylist/range`
+
+请求方式: POST
+
+请求参数:
+
+| 名称 | 说明 | 类型 | 长度 | 必要 | 参与Sign计算 |备注|
+| :-- | :-- | :-- | -- | -- | -- | :-- |
+|partner|合作方标识|String|32|是|／|==需要申请==|
+|user_id|保留字段|String|32|是|是|只能填'*'|
+|begin|范围开始时间|Long|64bit|是|否|开始时间，时间戳(1970年1月1日0时开始的秒数)|
+|end|范围结束时间|Long|64bit|是|否|结束时间，时间戳(1970年1月1日0时开始的秒数)|
+|count|每页的问诊数|Integer|32bit|是|否|分页查询里，每一页包含的问诊数，最大50|
+|start_num|页码|Integer|32bit|是|否|分页查询里，要查询的页数。例如：第一页传1，第二页传2|
+|ts|签名时间戳|Long|64bit|是|是|unix时间戳(1970年1月1日0时开始的秒数)，线上环境有15分钟超时，请保证调用系统的时钟同步。|
+|sign|签名|String|32|是|／|生成方法参考“Sign计算规则”|
+
+#### 返回
+
+| 字段 | 说明 | 类型 | 长度 | 必要 |备注|
+| :-- | :-- | :-- | -- | -- | :-- |
+|ret|接口调用返回码|Integer|32bit|是|1: 成功, 其他: 错误码|
+|msg|接口调用结果消息|String|256|是|如果调用失败，这里有错误信息|
+|data|数据结果|Object|/|是|数据定义，参考"[诊单查询结果](#inquery_result)"|
 
 ## HTTP接口
 
