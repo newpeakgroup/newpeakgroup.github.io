@@ -125,8 +125,8 @@ URL:`partner/inquerylist/my`
 
 | 字段 | 说明 | 类型 | 长度 | 必要 |备注|
 | :-- | :-- | :-- | -- | -- | :-- |
-|count||Integer|32bit|是|诊单数据|
-|partner_inquery_list|诊单数组|Array(Object)|/|是|诊单对象定义，参考"[诊单对象](#inquery_data)"|
+|count||Integer|32bit|是|诊单查询结果总数量（不是分页内诊单数量）|
+|partner_inquery_list|诊单数组|Array(Object)|/|是|诊单查询结果（分页数据），诊单对象定义，参考"[诊单对象](#inquery_data)"|
 
 * **诊单对象**<a name="inquery_data"/>
 
