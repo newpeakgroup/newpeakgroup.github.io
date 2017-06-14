@@ -102,7 +102,7 @@ URL:`partner/inquerylist/my`
 
 请求方式: POST
 
-请求参数:
+请求参数: form-data
 
 | 名称 | 说明 | 类型 | 长度 | 必要 | 参与Sign计算 |备注|
 | :-- | :-- | :-- | -- | -- | -- | :-- |
@@ -163,7 +163,7 @@ URL:`partner/inquerylist/range`
 
 请求方式: POST
 
-请求参数:
+请求参数: form-data
 
 | 名称 | 说明 | 类型 | 长度 | 必要 | 参与Sign计算 |备注|
 | :-- | :-- | :-- | -- | -- | -- | :-- |
