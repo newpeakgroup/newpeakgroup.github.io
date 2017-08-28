@@ -137,6 +137,7 @@ URL:`partner/inquerylist/my`
 |finish_flag|诊单完成标志|String|32|是|包含：待处理，处理中，已完成，已取消|
 |guest_dept|科室|String|32|是|例如：妇科|
 |inquery_id|诊单ID|Integer|32bit|是|诊单表唯一主键|
+|mobile|注册用户电话号码|String|32bit|是|注册用户电话号码|
 |pay_flag|支付状态标志|String|32|是|包含：无需支付；待支付；已支付|
 |photos|用户上传的照片|String|256|是|多个图片用逗号分隔。例如: hc/1.jpg,hc/2.jpg，图片服务域名参考"[1诊开放平台图片服务地址](#img_host)"|
 |recipe_list|处方数组|Array(Object)|/|是|处方数组，诊单对象定义，参考"[处方对象](#recipe_data)"|
@@ -256,7 +257,7 @@ URL:`app/open/add_patient`
 |data.patient_id|患者ID|Object|/|是|2607|
 
 
-### 泉依需要提供的接口
+### 第3方药品库需要提供的接口
 
 #### 请求
 
@@ -281,7 +282,7 @@ URL:`泉依提供`
 |msg|接口调用结果消息|String|256|是|如果调用失败，这里有错误信息|
 |data|数据结果|Object|/|是|数据定义|
 |data.pageInfo|是否实名|Object|/|是|页码返回参数集合|
-|data.drugList|患者ID|Object(Array)|/|是|2607|
+|data.drugList|药品对象|Object(Array)|/|是|药品对象|
 
 
 * **页码对象**<a name="pageInfo"/>
@@ -300,8 +301,8 @@ URL:`泉依提供`
 |drug_code|药品ID|String|/|是|/|
 |drug_name|药品名称|String|/|是|/|
 |specification|规格|String|/|是|/|
-|drug_desc|泉依药品描述|String|/|是|/|
-|picture|图片地址|String|/|是|/|
+|drug_desc|泉依药品描述|String|/|是|接默认请填"暂无"|
+|picture|图片地址|String|/|是|接默认请填"#"|
 |brand|品牌|String|/|是|/|
 |price|价格|String|/|是|/|
-|detail_url|药品连接地址|String|/|是|/|
+|detail_url|药品连接地址|String|/|是|若无连接默认请填"#"|
