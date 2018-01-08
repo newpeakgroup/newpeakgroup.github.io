@@ -108,6 +108,7 @@ URL:`partner/inquerylist/my`
 | 名称 | 说明 | 类型 | 长度 | 必要 | 参与Sign计算 |备注|
 | :-- | :-- | :-- | -- | -- | -- | :-- |
 |partner|合作方标识|String|32|是|／|==需要申请==|
+|system|合作方标识|String|32|是|／|固定值partner|
 |user_id|用户名|String|32|是|是|要查询的用户唯一标识|
 |count|每页的问诊数|Integer|32bit|是|否|分页查询里，每一页包含的问诊数，最大50|
 |start_num|页码|Integer|32bit|是|否|分页查询里，要查询的页数。例如：第一页传1，第二页传2|
@@ -184,6 +185,7 @@ URL:`partner/inquerylist/range`
 | 名称 | 说明 | 类型 | 长度 | 必要 | 参与Sign计算 |备注|
 | :-- | :-- | :-- | -- | -- | -- | :-- |
 |partner|合作方标识|String|32|是|／|==需要申请==|
+|system|合作方标识|String|32|是|／|固定值partner|
 |user_id|保留字段|String|32|是|是|只能填'*'|
 |begin|范围开始时间|String|/|是|否|时间格式2017-01-01|
 |key_str|诊单ID|String|/|是|否|诊单ID：187|
@@ -235,14 +237,15 @@ URL:`app/open/add_patient`
 | 名称 | 说明 | 类型 | 长度 | 必要 | 参与Sign计算 |备注|
 | :-- | :-- | :-- | -- | -- | -- | :-- |
 |partner|合作方标识|String|32|是|/|==需要申请==|
+|system|合作方标识|String|32|是|／|固定值partner|
 |user_id|保留字段|String|32|是|是|用户唯一标识,合作方定义|
 |ts|签名时间戳|Long|64bit|是|是|unix时间戳(1970年1月1日0时开始的秒数)，线上环境有15分钟超时，请保证调用系统的时钟同步。|
 |sign|签名|String|32|是|／|生成方法参考“Sign计算规则”|
 |name|姓名|String|/|是|否|姓名|
 |birthday|出生日期|String|/|是|否|时间格式2017-01-01|
 |sex|性别|String|/|是|否|F-女;M-男|
-|card_num|身份证号码|Integer|32bit|是|否|身份证号码|
-|is_self|是否本人<是否设置为默认就诊人>	|Integer|32bit|是|否|/|
+|card_num|身份证号码|String|32bit|是|否|身份证号码|
+|is_self|是否本人<是否设置为默认就诊人>0:非本人;1:本人|int|32bit|是|否|/|
 |mobile|注册用户的手机号码（不是患者的号码）|Integer|32bit|是|否|/|
 
 
@@ -306,3 +309,4 @@ URL:`泉依提供`
 |brand|品牌|String|/|是|/|
 |price|价格|String|/|是|/|
 |detail_url|药品连接地址|String|/|是|若无连接默认请填"#"|
+|store|库存数|String|/|否|0|
